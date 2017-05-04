@@ -71,7 +71,7 @@ class ConnuserCommand extends AdminCommand
             $result_text[] = '서버 연결에 실패했습니다.';
         }
 
-        if ($message->getFrom()->getUsername() != $this->getTelegram()->getBotName()) {
+        if ($message->getFrom()->getUsername() != $this->getTelegram()->getBotUsername()) {
             if (count($result_text) == 0) {
                 $result_text[] = '연결된 사용자가 없습니다.';
             }

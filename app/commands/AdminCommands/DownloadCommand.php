@@ -53,7 +53,7 @@ class DownloadCommand extends AdminCommand
         $chat_id = $message->getChat()->getId();
         $user_id = $message->getFrom()->getId();
         $text = trim($message->getText(true));
-        $is_bot = (strcmp($message->getFrom()->getUsername(), $this->getTelegram()->getBotName()) === 0) ? true : false;
+        $is_bot = (strcmp($message->getFrom()->getUsername(), $this->getTelegram()->getBotUsername()) === 0) ? true : false;
 
         $data = [
             'chat_id' => $chat_id,

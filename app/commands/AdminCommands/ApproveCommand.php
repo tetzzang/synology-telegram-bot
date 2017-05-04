@@ -21,7 +21,7 @@ class ApproveCommand extends AdminCommand
     /**
      * @var string
      */
-    protected $description = '복 사용 승인 설정';
+    protected $description = '봇 사용 승인 설정';
 
     /**
      * @var string
