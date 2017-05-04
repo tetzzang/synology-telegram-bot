@@ -84,11 +84,11 @@ class ApproveCommand extends AdminCommand
                             $notify_text[] = '봇 사용 승인이 완료되었습니다.';
                             $notify_text[] = '사용 가능한 명령어는 /help 를 통해서 확인 가능합니다.';
 
-                            $data = [
+                            $notify_data = [
                                 'chat_id'             => $id,
                                 'text'                => implode(PHP_EOL, $notify_text),
                             ];
-                            Request::sendMessage($data);
+                            Request::sendMessage($notify_data);
                         }
 
                         $result_text[] = '변경되었습니다.';
@@ -108,6 +108,10 @@ class ApproveCommand extends AdminCommand
                 $state = 0;
                 if (isset($notes['state'])) {
                     $state = $notes['state'];
+                }
+
+                if ($state === 0 && $message->getCommand() !== $this->name) {
+                    $text = '[' . substr($message->getCommand(), strlen($this->name)) . ']';
                 }
 
                 switch ($state) {
@@ -197,11 +201,11 @@ class ApproveCommand extends AdminCommand
                                     $notify_text[] = '봇 사용 승인이 완료되었습니다.';
                                     $notify_text[] = '사용 가능한 명령어는 /help 를 통해서 확인 가능합니다.';
 
-                                    $data = [
+                                    $notify_data = [
                                         'chat_id'             => $id,
                                         'text'                => implode(PHP_EOL, $notify_text),
                                     ];
-                                    Request::sendMessage($data);
+                                    Request::sendMessage($notify_data);
                                 }
 
                                 $result_text[] = '변경되었습니다.';

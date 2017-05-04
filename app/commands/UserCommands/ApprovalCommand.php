@@ -86,7 +86,7 @@ class ApprovalCommand extends UserCommand
                                 $notify_text = [];
                                 $notify_text[] = '*봇 사용 승인 요청 알림*';
                                 $notify_text[] = '_--------------------------------------------------------------_';
-                                
+
                                 $chat = $message->getChat();
                                 $whois = '/whois' . str_replace('-', 'g', $chat->getId());
                                 if ($chat->isPrivateChat()) {
@@ -97,12 +97,13 @@ class ApprovalCommand extends UserCommand
                                     $notify_text[] = '- G ' . $chat->getTitle() . ' \[' . $whois . ']';
                                 }
                                 $notify_text[] = 'Message: ' . $text;
-                                $data = [
+                                $notify_text[] = PHP_EOL . '/approve' . $chat->getId();
+                                $notify_data = [
                                     'chat_id'             => ADMIN_ID,
                                     'parse_mode'          => 'Markdown',
                                     'text'                => implode(PHP_EOL, $notify_text),
                                 ];
-                                Request::sendMessage($data);
+                                Request::sendMessage($notify_data);
 
                                 $result_text[] = '승인 요청이 완료되었습니다.';
                             } else {

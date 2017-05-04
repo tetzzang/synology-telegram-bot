@@ -115,7 +115,7 @@ class ResponseCommand extends AdminCommand
                             $this->conversation->update();
 
                             $result_text[] = '상태를 선택하여 주세요:';
-                            $data['reply_markup'] = (new Keyboard(['확인', '승인', '거부']))
+                            $data['reply_markup'] = (new Keyboard(['확인', '완료', '거부']))
                                     ->setOneTimeKeyboard(true)
                                     ->setResizeKeyboard(true)
                                     ->setSelective(true);
@@ -224,12 +224,12 @@ class ResponseCommand extends AdminCommand
                         $notify_text[] = sprintf('요청: %s (%s)', $result['request_message'], $result['created_at']);
                         $notify_text[] = sprintf('응답: %s (%s)', $response, $date);
                         $notify_text[] = '```';
-                        $data = [
+                        $notify_data = [
                             'chat_id'             => $result['user_id'],
                             'parse_mode'          => 'Markdown',
                             'text'                => implode(PHP_EOL, $notify_text),
                         ];
-                        Request::sendMessage($data);
+                        Request::sendMessage($notify_data);
                     }
                 }
                 return true;

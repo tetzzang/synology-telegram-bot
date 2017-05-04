@@ -156,12 +156,12 @@ class RequestCommand extends UserCommand
                                     $notify_text[] = '```';
                                     $notify_text[] = $text;
                                     $notify_text[] = '```';
-                                    $data = [
+                                    $notify_data = [
                                         'chat_id'             => ADMIN_ID,
                                         'parse_mode'          => 'Markdown',
                                         'text'                => implode(PHP_EOL, $notify_text),
                                     ];
-                                    Request::sendMessage($data);
+                                    Request::sendMessage($notify_data);
 
                                     $result_text[] = '요청이 등록되었습니다.';
                                 } else {
