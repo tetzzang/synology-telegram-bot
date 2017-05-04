@@ -19,6 +19,8 @@ CREATE TABLE IF NOT EXISTS `chat` (
   `created_at` timestamp NULL DEFAULT NULL COMMENT 'Entry date creation',
   `updated_at` timestamp NULL DEFAULT NULL COMMENT 'Entry date update',
   `old_id` bigint DEFAULT NULL COMMENT 'Unique chat identifier, this is filled when a group is converted to a supergroup',
+  `approval_of_bot_use` tinyint(1) DEFAULT 0 COMMENT 'Approved use of bot features.',
+  `latest_video_notification` tinyint(1) DEFAULT 0 COMMENT 'Notifications for the latest video',
 
   PRIMARY KEY (`id`),
   KEY `old_id` (`old_id`)
