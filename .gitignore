@@ -1,0 +1,13 @@
+
+/vendor/
+
+/log/
+/upload/
+/download/
+
+/app/config/config.php
+
+composer.lock
+.ftpconfig
+.DS_Store
+Thumbs.db

@@ -1,0 +1,8 @@
+{
+    "name": "tetzzang/wildbearbot",
+    "type": "project",
+    "require": {
+        "php": ">=5.5.0",
+        "longman/telegram-bot": "*"
+    }
+}
