@@ -110,8 +110,13 @@ class ApproveCommand extends AdminCommand
                     $state = $notes['state'];
                 }
 
-                if ($state === 0 && $message->getCommand() !== $this->name) {
+                if ($state === 0 && !is_numeric($this->getChatId($text)) && $message->getCommand() !== $this->name) {
                     $text = '[' . substr($message->getCommand(), strlen($this->name)) . ']';
+
+					//We need that '-' now, bring it back
+					if (strpos($text, 'g') === 1) {
+						$text = str_replace('g', '-', $text);
+					}
                 }
 
                 switch ($state) {
@@ -231,7 +236,7 @@ class ApproveCommand extends AdminCommand
     }
 
     private function getChatId($data) {
-        preg_match('/\[[0-9]+\]/', $data, $match);
+        preg_match('/\[-?[0-9]+\]/', $data, $match);
         return substr($match[0], 1, -1);
     }
 }

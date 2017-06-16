@@ -97,7 +97,7 @@ class ApprovalCommand extends UserCommand
                                     $notify_text[] = '- G ' . $chat->getTitle() . ' \[' . $whois . ']';
                                 }
                                 $notify_text[] = 'Message: ' . $text;
-                                $notify_text[] = PHP_EOL . '/approve' . $chat->getId();
+                                $notify_text[] = PHP_EOL . '/approve' . str_replace('-', 'g', $chat->getId());
                                 $notify_data = [
                                     'chat_id'             => ADMIN_ID,
                                     'parse_mode'          => 'Markdown',

@@ -9,5 +9,6 @@
 
 composer.lock
 .ftpconfig
+.ftpignore
 .DS_Store
 Thumbs.db

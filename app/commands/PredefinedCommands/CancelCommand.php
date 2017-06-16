@@ -83,13 +83,15 @@ class CancelCommand extends UserCommand
      */
     private function removeKeyboard($text)
     {
-        return Request::sendMessage(
-            [
-                'reply_markup' => Keyboard::remove(['selective' => true]),
-                'chat_id'      => $this->getMessage()->getChat()->getId(),
-                'text'         => $text,
-            ]
-        );
+        $data = [
+            'reply_markup' => Keyboard::remove(['selective' => true]),
+            'chat_id'      => $this->getMessage()->getChat()->getId(),
+            'text'         => $text,
+        ];
+        if ($this->getMessage()->getChat()->isGroupChat() || $this->getMessage()->getChat()->isSuperGroup()) {
+            $data['reply_to_message_id'] = $this->getMessage()->getMessageId();
+        }
+        return Request::sendMessage($data);
     }
 
     /**

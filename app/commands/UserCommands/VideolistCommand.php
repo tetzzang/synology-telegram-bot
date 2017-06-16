@@ -132,6 +132,9 @@ class VideolistCommand extends UserCommand
             $result_text[] = '봇이 승인되지 않았습니다.' . PHP_EOL . '/approval';
         }
 
+        if ($message->getChat()->isGroupChat() || $message->getChat()->isSuperGroup()) {
+            $data['reply_to_message_id'] = $message->getMessageId();
+        }
         if (empty($data['reply_markup'])) {
             $data['reply_markup'] = Keyboard::remove(['selective' => true]);
         }
