@@ -225,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `request_limiter` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT charSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE `down_list` (
+CREATE TABLE IF NOT EXISTS `down_list` (
   `id` CHAR(50) COMMENT 'Unique download station item identifier',
   `title` text COMMENT 'download station item title',
   `account` CHAR(255) COMMENT 'download station item user',
@@ -251,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `user_request` (
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE `wol_device` (
+CREATE TABLE IF NOT EXISTS `wol_device` (
   `mac` CHAR(50) COMMENT 'Unique mac address identifier',
   `name` CHAR(255) COMMENT 'device name',
 
